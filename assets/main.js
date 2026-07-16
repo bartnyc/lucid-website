@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     statusEl.className = 'form-status';
 
     try {
-      const res = await fetch('/api/lead-capture', {
+      const res = await fetch('api/lead-capture', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const result = await res.json();
 
       if (res.ok && result.ok) {
-        window.location.href = '/thank-you.html';
+        window.location.href = 'thank-you.html';
       } else {
         statusEl.textContent = result.error || 'Something went wrong. Please try again.';
         statusEl.className = 'form-status err';
