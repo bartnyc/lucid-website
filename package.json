@@ -1,0 +1,12 @@
+{
+  "name": "lucid-website",
+  "private": true,
+  "scripts": {
+    "start": "http-server . -p 8080 -c-1",
+    "dev": "wrangler pages dev ."
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "wrangler": "^4.0.0"
+  }
+}
