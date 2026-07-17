@@ -19,11 +19,17 @@ h1,h2,h3{font-weight:700;letter-spacing:-0.02em;}
 
 /* NAV */
 header{position:sticky;top:0;z-index:50;background:rgba(11,15,25,0.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1140px;margin:0 auto;}
+nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1140px;margin:0 auto;}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;}
 .logo-badge{width:32px;height:32px;border-radius:9px;background:linear-gradient(160deg,var(--purple-light),var(--purple));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--teal-light);}
+.nav-menu{display:flex;align-items:center;gap:28px;}
 .navlinks{display:flex;gap:28px;font-size:14px;color:var(--gray);}
 .navlinks a:hover, .navlinks a.active{color:var(--white);}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;padding:8px;border:1px solid var(--border);border-radius:8px;background:transparent;cursor:pointer;flex-shrink:0;}
+.nav-toggle span{display:block;height:2px;width:100%;background:var(--white);border-radius:1px;transition:transform .2s,opacity .2s;}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-toggle.open span:nth-child(2){opacity:0;}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;border:none;cursor:pointer;}
 .btn-primary{background:var(--teal);color:#04231a;}
 .btn-primary:hover{background:var(--teal-light);}
@@ -148,5 +154,10 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;font-
 @media (max-width: 900px){
   .hero-grid,.grid-2,.steps,.stack-grid,.pricing-grid,.team-grid,.roadmap{grid-template-columns:1fr;}
   .stats .wrap{grid-template-columns:1fr;}
-  .navlinks{display:none;}
+  .nav-toggle{display:flex;}
+  .nav-menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:12px 24px 20px;background:rgba(11,15,25,0.98);border-bottom:1px solid var(--border);}
+  .nav-menu.open{display:flex;}
+  .navlinks{flex-direction:column;gap:0;width:100%;}
+  .navlinks a{padding:14px 0;border-bottom:1px solid var(--border);}
+  .nav-cta{width:100%;text-align:center;margin-top:16px;}
 }
