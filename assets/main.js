@@ -4,6 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const menu = document.getElementById('nav-menu');
 
   if (navCheck && menu) {
+    const toggle = document.querySelector('.nav-toggle');
+
+    navCheck.addEventListener('change', () => {
+      if (toggle) {
+        toggle.setAttribute('aria-label', navCheck.checked ? 'Close navigation menu' : 'Open navigation menu');
+      }
+    });
+
     menu.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {
         navCheck.checked = false;

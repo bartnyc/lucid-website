@@ -24,16 +24,15 @@ nav{position:relative;display:flex;align-items:center;justify-content:space-betw
 .logo-badge{width:32px;height:32px;border-radius:9px;background:linear-gradient(160deg,var(--purple-light),var(--purple));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--teal-light);}
 .nav-check{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 .nav-menu{display:flex;align-items:center;gap:28px;}
+.nav-menu-panel{display:flex;align-items:center;gap:28px;}
 .navlinks{display:flex;gap:28px;font-size:14px;color:var(--gray);}
 .navlinks a:hover,.navlinks a.active{color:var(--white);}
-.nav-toggle{display:none;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--teal);border-radius:8px;background:rgba(14,159,122,0.12);color:var(--teal-light);font-size:14px;font-weight:600;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent;user-select:none;}
-.nav-toggle-bars{display:flex;flex-direction:column;justify-content:center;gap:4px;width:18px;height:14px;}
-.nav-toggle-bars span{display:block;height:2px;width:100%;background:currentColor;border-radius:1px;transition:transform .2s,opacity .2s;}
-.nav-check:checked + .nav-toggle .nav-toggle-bars span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.nav-toggle{display:none;align-items:center;justify-content:center;width:44px;height:44px;padding:10px;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--white);cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent;user-select:none;}
+.nav-toggle-bars{display:flex;flex-direction:column;justify-content:center;gap:5px;width:20px;height:16px;}
+.nav-toggle-bars span{display:block;height:2px;width:100%;background:currentColor;border-radius:1px;transition:transform .3s ease,opacity .2s ease;}
+.nav-check:checked + .nav-toggle .nav-toggle-bars span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .nav-check:checked + .nav-toggle .nav-toggle-bars span:nth-child(2){opacity:0;}
-.nav-check:checked + .nav-toggle .nav-toggle-bars span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
-.nav-check:checked + .nav-toggle .nav-toggle-text::before{content:"Close";}
-.nav-check:not(:checked) + .nav-toggle .nav-toggle-text::before{content:"Menu";}
+.nav-check:checked + .nav-toggle .nav-toggle-bars span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;border:none;cursor:pointer;}
 .btn-primary{background:var(--teal);color:#04231a;}
 .btn-primary:hover{background:var(--teal-light);}
@@ -158,23 +157,39 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;font-
 @media (max-width: 900px){
   .hero-grid,.grid-2,.steps,.stack-grid,.pricing-grid,.team-grid,.roadmap{grid-template-columns:1fr;}
   .stats .wrap{grid-template-columns:1fr;}
-  .nav-toggle{display:inline-flex;}
+  .nav-toggle{display:flex;}
   .nav-menu{
-    display:none;
-    position:fixed;
-    inset:0;
-    z-index:90;
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    display:grid;
+    grid-template-rows:0fr;
+    gap:0;
+    transition:grid-template-rows .35s cubic-bezier(.4,0,.2,1);
+    pointer-events:none;
+  }
+  .nav-check:checked ~ .nav-menu{
+    grid-template-rows:1fr;
+    pointer-events:auto;
+  }
+  .nav-menu-panel{
+    overflow:hidden;
     flex-direction:column;
     align-items:stretch;
-    justify-content:flex-start;
     gap:0;
-    padding:88px 24px 32px;
     background:rgba(11,15,25,0.98);
-    overflow-y:auto;
+    border-bottom:1px solid var(--border);
+    box-shadow:0 16px 32px -12px rgba(0,0,0,0.55);
+    opacity:0;
+    transform:translateY(-10px);
+    transition:opacity .3s ease,transform .3s ease;
   }
-  .nav-check:checked ~ .nav-menu{display:flex;}
-  body:has(.nav-check:checked){overflow:hidden;}
+  .nav-check:checked ~ .nav-menu .nav-menu-panel{
+    opacity:1;
+    transform:translateY(0);
+  }
   .navlinks{flex-direction:column;gap:0;width:100%;}
-  .navlinks a{padding:16px 0;font-size:16px;border-bottom:1px solid var(--border);}
-  .nav-cta{width:100%;text-align:center;margin-top:24px;padding:14px 20px;font-size:15px;}
+  .navlinks a{padding:14px 24px;font-size:15px;border-bottom:1px solid var(--border);}
+  .nav-cta{margin:16px 24px 20px;width:auto;text-align:center;}
 }
