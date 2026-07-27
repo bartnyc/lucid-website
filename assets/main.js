@@ -1,5 +1,16 @@
-// LucidClaim site — mobile nav + lead capture form
+// LucidClaim site — mobile nav + login link + lead capture form
 document.addEventListener('DOMContentLoaded', () => {
+  const config = window.LUCID_SITE_CONFIG || {};
+  const loginUrl = (config.appLoginUrl || '').trim();
+
+  document.querySelectorAll('.nav-login').forEach((link) => {
+    if (!loginUrl) {
+      link.hidden = true;
+      return;
+    }
+    link.href = loginUrl;
+  });
+
   const navCheck = document.getElementById('nav-check');
   const menu = document.getElementById('nav-menu');
 
