@@ -10,16 +10,18 @@ The original plan (matching the Triovera precedent) was an Astro + TypeScript bu
 
 | Path | Purpose |
 |---|---|
-| `index.html` | Home — hero, problem stats, 4 value props, CTA |
-| `product.html` | Coding engine + denial prevention detail + tech stack |
+| `index.html` | Home — hero, stats, links to Who we are / What we do |
+| `who-we-are.html` | Mission, values, expertise |
+| `what-we-do.html` | Standalone vs integrated solutions, platform, denial prevention |
 | `workflow.html` | 4-step process + app screens |
+| `technology.html` | AI, data platform, and application stack |
+| `roadmap.html` | 3-phase implementation roadmap |
 | `pricing.html` | Subscription vs. usage-based + business value |
-| `team.html` | Founder cards + mission |
-| `roadmap.html` | 3-phase roadmap |
 | `contact.html` | Lead form → posts to `/api/lead-capture` |
 | `thank-you.html` | Confirmation page |
 | `assets/style.css` | Design system (purple `#6C4FA8` + teal `#0E9F7A`, dark navy bg) |
-| `assets/main.js` | Form submit handler (fetch → `/api/lead-capture` → redirect) |
+| `assets/site-config.js` | Snowflake app login URL |
+| `assets/main.js` | Nav, login link, form submit handler |
 | `functions/api/lead-capture.js` | Cloudflare Pages Function — validates lead, relays to Slack/HubSpot if configured |
 
 ## Run locally
